@@ -40,8 +40,15 @@ class MoviesController < ApplicationController
   
   def directors
     @movie = Movie.find params[:id]
-    #redirect_to directors_movie_path(@movie)
-    @samedirector = Movie.with_director(@movie.director)
+    dir = @movie.director
+    #puts("NOTICE: dir is #{dir} for movie #{@movie.title}")
+    if dir == "NODIRECTOR" || dir == nil || dir == ""
+      flash[:notice] = "\'#{@movie.title}\' has no director info"
+      redirect_to movies_path
+    else
+      #redirect_to directors_movie_path(@movie)
+      @samedirector = Movie.with_director(@movie.director)
+    end
   end
 
   private

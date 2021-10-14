@@ -34,6 +34,12 @@ module NavigationHelpers
       selector = "title = \"#{$2}\""
       movs = Movie.where(selector)
       "/movies/#{movs[0].id}"
+    
+    # Then I should be on the Similar Movies page for "Star Wars"
+    when /^the (Similar Movies )?page for "(.*)"$/
+      selector = "title = \"#{$2}\""
+      movs = Movie.where(selector)
+      "/movies/#{movs[0].id}/directors"
 
     else
       begin
