@@ -33,7 +33,7 @@ module NavigationHelpers
     when /^the (details )?page for "(.*)"$/
       selector = "title = \"#{$2}\""
       movs = Movie.where(selector)
-      "/movies/#{movs[0].id}/directors"
+      "/movies/#{movs[0].id}"
 
     else
       begin
