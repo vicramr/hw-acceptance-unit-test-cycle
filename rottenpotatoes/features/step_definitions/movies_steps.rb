@@ -29,3 +29,8 @@ Then /the director of "(.*)" should be "(.*)"/ do |title, dir|
   mov = Movie.where("title = \"#{title}\"")[0]
   expect(mov.director == dir)
 end
+
+# This step is copied from my homework 3 submission
+Then /(.*) seed movies should exist/ do | n_seeds |
+  expect(Movie.count).to eq n_seeds.to_i
+end
