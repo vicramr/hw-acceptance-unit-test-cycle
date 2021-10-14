@@ -23,3 +23,9 @@ Then /I should see all the movies/ do
     step %{I should see "#{movie.title}"}
   end
 end
+
+Then /the director of "(.*)" should be "(.*)"/ do |title, dir|
+  # Check database for director
+  mov = Movie.where("title = \"#{title}\"")[0]
+  expect(mov.director == dir)
+end
