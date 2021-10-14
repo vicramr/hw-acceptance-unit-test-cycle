@@ -28,6 +28,12 @@ module NavigationHelpers
       selector = "title = \"#{$2}\""
       movs = Movie.where(selector)
       "/movies/#{movs[0].id}/edit"
+    
+    # Given I am on the details page for "Alien"
+    when /^the (details )?page for "(.*)"$/
+      selector = "title = \"#{$2}\""
+      movs = Movie.where(selector)
+      "/movies/#{movs[0].id}/directors"
 
     else
       begin
